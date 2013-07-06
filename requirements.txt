@@ -1,0 +1,6 @@
+django>=1.4.3
+django-allauth>=0.10.1
+django-avatar
+PIL
+django-cms
+
