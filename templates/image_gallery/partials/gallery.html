@@ -1,0 +1,26 @@
+{% load i18n thumbnail placeholder_tags %}
+	
+
+<div class="bannerbg">
+	<div class="container clearfix">
+		<h1 class="regular white bottom_line">{{ gallery.title }}</h1>
+
+		<div class="white">
+		<b>{% if gallery.date %}{{ gallery.date|date }}: {% endif %}{{ gallery.location }}</b>
+		{% render_placeholder gallery.description "description" %}
+	</div>
+
+		<div class="flexslider" >
+		    <ul class="slides">
+		    {% for image in gallery.get_folder_images %}
+		        <li>
+		        	<img src="{% thumbnail image.file 940x360 crop upscale %}" alt="{{ image.default_alt_text }}" \>
+		        	{% if image.description %}<p class="flex-caption">{{ image.description }}</p>{% endif %}
+		        </li>
+		    {% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="clear padding40"></div>

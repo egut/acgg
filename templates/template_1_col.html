@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block base_content %}
+    <section class="container clearfix">
+		<!-- Page Title -->
+		<header class="container page_info clearfix">
+			
+				<h1 class="regular brown bottom_line">{% page_attribute "page_title" %}</h1>
+			
+			<div class="clear"></div>
+		</header>
+
+        <div class="clear padding20"></div>
+
+		<!-- /Page Title -->
+		<div class="col_1_1 last">
+		   {% placeholder column_one %}
+		</div>
+	</section>
+{% endblock %}
