@@ -6,7 +6,7 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-
+#DATE_FORMAT = "%d %B %Y"
 
 #Remove .../acgg/settings.py
 PROJECT_ROOT = os.path.normpath(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -304,6 +304,58 @@ SOCIALACCOUNT_PROVIDERS = \
           'AUTH_PARAMS': { 'access_type': 'online' } }}
 
 
+#########################################################################
+# Django CMS
+INSTALLED_APPS += (
+    'cms', 
+    'mptt', 
+    'menus', 
+    'south', 
+    'sekizai',
+    'filer',
+    'cms.plugins.googlemap',
+    'cms.plugins.link',
+    'cms.plugins.snippet',
+    'cms.plugins.text',
+
+    'easy_thumbnails',
+    'cmsplugin_filer_file',
+    'cmsplugin_filer_folder',
+    'cmsplugin_filer_image',
+    'cmsplugin_filer_teaser',
+    'cmsplugin_filer_video',
+
+    'image_gallery',#'cmsplugin_gallery',
+    'reversion'
+    )
+
+
+MIDDLEWARE_CLASSES += (
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'cms.context_processors.media',
+    'sekizai.context_processors.sekizai',
+)
+
+
+CMS_TEMPLATES = (
+    ('template_1_col.html', 'One column layout'),
+    ('template_2_cols.html', 'Two columns layout'),
+    ('template_3_cols.html', 'Three columns layout'),
+    ('template_4_cols.html', 'Four columns layout'),
+    ('template_5_cols.html', 'Five columns layout'),
+)
+
+LANGUAGES = [
+    ('sv', 'Svenska'),
+]
 
 #########################################################################
 # DEVELOPMENT

@@ -3,4 +3,8 @@ django-allauth>=0.10.1
 django-avatar
 PIL
 django-cms
+django-reversion
+django-filer
+cmsplugin-filer
+cmsplugin-image-gallery
 
