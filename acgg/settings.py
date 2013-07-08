@@ -136,6 +136,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'smart_selects',
+    'booking',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -166,6 +168,17 @@ LOGGING = {
         },
     }
 }
+
+#########################################################################
+# TUMBNAIL
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    #'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
 
 #########################################################################
 # ADMIN
@@ -356,6 +369,12 @@ CMS_TEMPLATES = (
 LANGUAGES = [
     ('sv', 'Svenska'),
 ]
+
+#########################################################################
+# RESERVATIONS
+
+# INSTALLED_APPS += ('reservations')
+
 
 #########################################################################
 # DEVELOPMENT
