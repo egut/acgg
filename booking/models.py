@@ -67,6 +67,7 @@ class ParticipantLevel(models.Model):
     event = models.ForeignKey('Event', 
         help_text = _("To what event do this affect")
         )
+
     def __unicode__(self):
         return "%s - %s kr"  % (self.description, self.price)
 

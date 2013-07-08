@@ -19,6 +19,11 @@ class ParticipantAdmin(admin.ModelAdmin):
     """ Participant Admin interface """
     form = forms.ParticipantForm
 
+    list_display = ('event','user','date','level')
+    list_filter = ('event',)
+    search_fields = ['event__name','user__first_name','user__last_name','date']
+
+
 
 admin.site.register(models.Event, EventAdmin)
 admin.site.register(models.Participant, ParticipantAdmin)
