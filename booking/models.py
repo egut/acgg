@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 from smart_selects.db_fields import ChainedForeignKey 
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
@@ -33,6 +34,11 @@ class Event(models.Model):
     end_date = models.DateField(
         help_text = _("End date of the Event")
         )
+
+    def _participants(self):
+        return Event.objects.get(pk = self.pk ).participant_set.values_list('user__username', flat = True)
+
+    participants = property(_participants)
 
     def __unicode__(self):
         return "%s"  % (self.name)
@@ -109,4 +115,7 @@ class Participant(models.Model):
         )
 
     def __unicode__(self):
-        return "%s (%s - %s)"  % (self.user, self.from_date, self.to_date) 
+        return "%s (%s - %s)"  % (self.user, self.from_date, self.to_date)
+
+    def get_absolute_url(self):
+        return reverse('participant_detail', kwargs={'pk': self.pk}) 

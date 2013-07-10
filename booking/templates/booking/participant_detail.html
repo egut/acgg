@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+
+<h1>{{ user.first_name }} {{ user.last_name }}</h1>
+
+{% if participant %}
+<form action="{% url 'participant_update' participant.id %}">
+<h1><a href="{% url 'event_detail' participant.event.id %}">{{ participant.event.name }}</a></h1>
+<p>{{ participant.from_date }} - {{ participant.to_date }} {{ participant.level }}</p>
+<input type="submit" value="Edit" /> 
+</form>
+{% endif %} 
+
+{% endblock %}

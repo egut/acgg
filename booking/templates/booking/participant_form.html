@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+
+<form method ="POST"> 
+    {% csrf_token %}
+
+    {% if form.errors %}
+            <div class="error">
+                    <b>{% trans "Found some errors:" %}</b>
+                    <ol>
+                    {% for error in form.errors %}
+                            <li><strong>{{ error|escape }}</strong></li>
+                    {% endfor %}
+                    </ol>
+            </div>
+    {% endif %}
+    {% csrf_token %}
+    {% for field in form.visible_fields %}
+        {# Include the hidden fields in the form #}
+            {% if forloop.first %}
+                    {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                    {% endfor %}
+            {% endif %}
+    
+            <div class="field {% if field.errors %}field_error{% endif %}">
+                    {{ field.label_tag }} {{ field }}
+                    <i>{{ field.help_text }}</i>
+                    {{ field.errors }}
+            </div>
+    {% endfor %}
+
+    <input type="submit" value="Save" />
+</form>
+
+{% endblock %}

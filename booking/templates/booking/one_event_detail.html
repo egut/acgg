@@ -1,0 +1,23 @@
+{% load avatar_tags %}
+
+<h2><a href="{% url 'event_detail' event.id %}">{{ event.name }}</a></h2>
+	<i>{{ event.start_date }} - {{ event.end_date }}</i>
+	<p>{{ event.description }}</p>
+
+    <ul>	
+	{% for participant in event.participant_set.all %}
+    	{% if participant.user == user %}
+    	<li><a href="{% url 'participant_update' participant.id %}">{% avatar participant.user %}</a></li>
+    	{% else %}
+    	<li>{% avatar participant.user %}</li>
+    	{% endif %}
+    {% empty %}
+    	<li><a href="{% url 'participant_add' event.id %}">Bli den första att anmäla dig!</a></li>
+    {% endfor %}
+
+    {% if event.participants %}
+    	{% if user.username not in event.participants %}
+    	<li><a href="{% url 'participant_add' event.id %}">Anmäla dig!</a></li>
+    	{% endif %}
+    {% endif %}
+    </ul>

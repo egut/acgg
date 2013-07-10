@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load avatar_tags %}
+{% block content %}
+
+<h1>Lista på händelster</h1>
+
+{% for event in object_list %}
+{% include 'booking/one_event_detail.html' %}
+
+{% empty %}
+    <b>No event yet.</b>
+{% endfor %}
+
+
+{% endblock %}
