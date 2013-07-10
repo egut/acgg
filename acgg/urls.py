@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^chaining/', include('smart_selects.urls')),
  
     #My booking app
-    url(r'^booking/',include('booking.urls')),
+    #url(r'^booking/',include('booking.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

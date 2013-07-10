@@ -3,8 +3,15 @@ from django.core.urlresolvers import reverse
 from smart_selects.db_fields import ChainedForeignKey 
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
+from cms.models import CMSPlugin
 
-# Create your models here.
+class EventPlugin(CMSPlugin):
+    """ Make this a CMSPlugins """
+    event = models.ForeignKey('booking.Event', related_name='plugins')
+
+    def __unicode__(self):
+      return self.event.name
+
 
 class Event(models.Model):
     """ This describ the event in question """
