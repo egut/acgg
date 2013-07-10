@@ -1,0 +1,13 @@
+.booking_participant li {
+	display: block;
+	float: left;
+	margin: 5px;
+}
+
+.clear {
+	content:".";
+	display:block;
+	clear:both;
+	height:0;
+	visibility:hidden;
+}

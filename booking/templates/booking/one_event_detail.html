@@ -1,23 +1,30 @@
 {% load avatar_tags %}
+{% load sekizai_tags %}
+{% load staticfiles %}
+
+{% addtoblock "css" %}<link rel="stylesheet" type="text/css" href="{% static 'booking/css/booking.css' %}"></script>{% endaddtoblock %}
 
 <h2><a href="{% url 'event_detail' event.id %}">{{ event.name }}</a></h2>
 	<i>{{ event.start_date }} - {{ event.end_date }}</i>
 	<p>{{ event.description }}</p>
 
-    <ul>	
+    <ul class="booking_participant">	
 	{% for participant in event.participant_set.all %}
     	{% if participant.user == user %}
     	<li><a href="{% url 'participant_update' participant.id %}">{% avatar participant.user %}</a></li>
     	{% else %}
     	<li>{% avatar participant.user %}</li>
     	{% endif %}
-    {% empty %}
-    	<li><a href="{% url 'participant_add' event.id %}">Bli den första att anmäla dig!</a></li>
     {% endfor %}
-
+	</ul>
+	<div class="clear"></div>
+	<ul>
     {% if event.participants %}
     	{% if user.username not in event.participants %}
     	<li><a href="{% url 'participant_add' event.id %}">Anmäla dig!</a></li>
     	{% endif %}
+
+    {% else %}
+    	<li><a href="{% url 'participant_add' event.id %}">Bli den första att anmäla dig!</a></li>
     {% endif %}
     </ul>
