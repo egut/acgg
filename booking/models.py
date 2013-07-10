@@ -92,8 +92,12 @@ class Participant(models.Model):
         help_text = _("What event to attend")
         )
 
-    date = models.DateField(
-        help_text = _("What date to attend")
+    from_date = models.DateField(
+        help_text = _("What date will you arraive?")
+        )
+
+    to_date = models.DateField(
+        help_text = _("What date will you depart?")
         )
 
     level = ChainedForeignKey(ParticipantLevel,
@@ -105,4 +109,4 @@ class Participant(models.Model):
         )
 
     def __unicode__(self):
-        return "%s"  % (self.user)
+        return "%s (%s - %s)"  % (self.user, self.from_date, self.to_date) 

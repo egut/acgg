@@ -27,16 +27,16 @@ class ParticipantLevelForm(forms.ModelForm):
 
 class ParticipantForm(forms.ModelForm):
     """
-    Describe master Participant form 
+    Describe Participant form 
     """
 
     class Meta:
         model = booking_models.Participant
-        fields = ('user','event','date','level')
+        fields = ('user','event','to_date', 'from_date','level')
 
 
     def clean(self):
-        my_date = self.cleaned_data.get('date')
+        my_date = self.cleaned_data.get('to_date')
         my_event = self.cleaned_data.get('event')
         between = booking_models.Event.objects.filter(pk = my_event.id).filter(start_date__lte = my_date, end_date__gte = my_date)
 

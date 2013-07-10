@@ -19,9 +19,9 @@ class ParticipantAdmin(admin.ModelAdmin):
     """ Participant Admin interface """
     form = forms.ParticipantForm
 
-    list_display = ('event','user','date','level')
+    list_display = ('event','user','from_date','to_date','level')
     list_filter = ('event',)
-    search_fields = ['event__name','user__first_name','user__last_name','date']
+    search_fields = ['event__name','user__first_name','user__last_name','from_date','to_date']
 
 
 
