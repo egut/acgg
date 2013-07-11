@@ -208,8 +208,18 @@ table td {
 table tr.grey {
 	background:#f2f2f2;
 }
+
+.foofooter {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+
+}
+
+
 /* ================= Forms ================= */
-input, textarea {
+button, input, textarea {
 	border:1px solid #cccccc;
 	padding:7px 10px 7px 10px;
 	font-size:11px;
@@ -291,6 +301,11 @@ input, textarea {
 	font-size:0;
 	line-height:0;
 }
+.padding300 {
+	padding-top:300px;
+	font-size:0;
+	line-height:0;
+}
 .none {
 	display:none;
 }
@@ -321,6 +336,11 @@ p + hr {
 /* ======================================================================================================
  GENERAL STRUCTURE
 =======================================================================================================*/
+
+.right {
+	float: right;
+	margin: 15px 0px 0px 20px;
+}
 
 /* ================= Header and Logo ================= */
 .container {
@@ -425,6 +445,27 @@ p + hr {
 	left:100% !important;
 	padding:0 !important;
 }
+
+.top-menu {
+	margin:15px 0 0 0;
+	float:right;
+}
+.top-menu a {
+	display:block;
+	position:relative;
+	font-size:12px;
+	color:#d93e39;
+	font-family:"Helvetica neue", Arial, sans-serif;
+	font-weight:bold;
+}
+.top-menu a:hover {
+	text-decoration:none;
+}
+
+.top-menu li ul li a {
+	background:#403830 url(../images/header-bg.jpg) repeat-x;
+}
+
 /* ================= Footer ================= */
 .footer_bg {
 	border-top:10px solid #d93e39;
@@ -551,7 +592,7 @@ p + hr {
 	padding:0 0 0 0;
 }
 .page_info .search .right {
-	float:left;
+	float:right;
 	padding:4px 0 0 0;
 }
 .page_info .search .inputSearch {
@@ -647,6 +688,35 @@ p + hr {
 }
 .content .col_1_2.last, .content .col_2_3.last, .content .col_1_3.last, .content .col_1_4.last, .content .col_1_5.last, .content .col_3_4.last {
 	margin:0;
+}
+
+
+.socialaccount_providers li {
+	white-space:nowrap;
+	display:block;
+	position:relative;
+	float: left;
+	margin: 10px;	
+
+}
+
+.socialaccount_provider {
+	font-size:20px;
+	padding: 10px;
+	border: 1px solid #d93e39;
+	background:#403830 url(../images/header-bg.jpg) repeat-x;
+	font-family:"Helvetica neue", Arial, sans-serif;
+	font-weight:bold;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	width: 10em;
+	display:block;
+	text-align: center;
+}
+
+.login-or {
+	display:block;
+	clear:both;	
 }
 /* ======================================================================================================
  SPECIFIC PAGE STYLES
