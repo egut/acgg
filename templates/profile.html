@@ -6,12 +6,13 @@
 {% block content %}
 <h1 class="regular brown bottom_line" >Din Profil</h1>
 {% user_display user %}
-<li><a href="{% url 'account_change_password' %}">Byt lösenord</a></li>
-<li><a href="{% url 'account_set_password' %}">Sätt lösenord</a></li>
+<h1>Admin</h1>
+<ul>
+	<li><a href="{% url 'account_change_password' %}">Byt lösenord</a></li>
+	<li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+</ul>
 
-<li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-
-<p>Avatar</p>
+<h1>Avatar</h1>
 {% avatar user %}
 <ul>
 	<li><a href="{% url 'avatar_change' %}">Byt avatar</a></li>
