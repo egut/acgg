@@ -1,0 +1,14 @@
+
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<form method="post" >
+    {% csrf_token %}
+    Är du säker på att du skall avanmäla dig?
+	<p>
+		<a href="{% url 'participant_update' participant.id %}" class="button green">Avbryt</a>
+ 		<input type="submit" value="Tyvärr!" />
+ 	</p>
+</form>
+
+{% endblock %}

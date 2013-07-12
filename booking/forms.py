@@ -30,7 +30,7 @@ class ParticipantSmallForm(forms.ModelForm):
 
     class Meta:
         model = booking_models.Participant
-        fields = ('event', 'to_date', 'from_date','level')
+        fields = ('event', 'from_date', 'to_date', 'level')
         widgets = {'event' : forms.HiddenInput()}
 
 
@@ -58,11 +58,13 @@ class ParticipantSmallForm(forms.ModelForm):
             self._errors["from_date"] = self.error_class([msg])
             del self.cleaned_data['from_date']
 
-        if self.cleaned_data.get('to_date') > self.cleaned_data.get('from_date'): 
-            #Fix the problem
-            tmp = self.cleaned_data.get('to_date')
-            self.cleaned_data['to_date'] = self.cleaned_data.get('from_date')
-            self.cleaned_data['from_date'] = tmp
+        if self.cleaned_data.get('from_date') and self.cleaned_data.get('from_date'):
+            #They might ber gone due to above conditions.
+            if self.cleaned_data.get('from_date') > self.cleaned_data.get('to_date'): 
+                #Fix the problem
+                tmp = self.cleaned_data.get('to_date')
+                self.cleaned_data['to_date'] = self.cleaned_data.get('from_date')
+                self.cleaned_data['from_date'] = tmp
 
         cleaned_data = super(ParticipantSmallForm, self).clean()
         return cleaned_data

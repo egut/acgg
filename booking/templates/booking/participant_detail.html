@@ -6,10 +6,8 @@
 
 {% if participant %}
 <form action="{% url 'participant_update' participant.id %}">
-<h1><a href="{% url 'event_detail' participant.event.id %}">{{ participant.event.name }}</a></h1>
-<p>{{ participant.from_date }} - {{ participant.to_date }} {{ participant.level }}</p>
-<input type="submit" value="Edit" /> 
-</form>
+<h1 class="regular brown bottom_line"><a href="{% url 'event_detail' participant.event.id %}">{{ participant.event.name }}</a></h1>
+<p>Du är anmäld på {{ participant.event.name }} mellan <b>{{ participant.from_date }}</b> och <b>{{ participant.to_date }}</b>. Medverkan nivå: {{ participant.level }} <a href="{% url 'participant_update' participant.id %}" class="button blue">Ändra</a> </p>
 {% endif %} 
 
 {% endblock %}

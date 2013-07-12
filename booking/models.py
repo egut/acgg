@@ -5,6 +5,8 @@ from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 from cms.models import CMSPlugin
 
+import datetime
+
 class EventPlugin(CMSPlugin):
     """ Make this a CMSPlugins """
     event = models.ForeignKey('booking.Event', related_name='plugins')
@@ -46,6 +48,18 @@ class Event(models.Model):
         return Event.objects.get(pk = self.pk ).participant_set.values_list('user__username', flat = True)
 
     participants = property(_participants)
+
+    def _dates(self):
+        dates = []
+        my_date = self.start_date
+        while my_date <= self.end_date:
+            dates.append(my_date)
+            my_date = my_date + datetime.timedelta(days = 1)
+
+        return dates
+
+    dates = property(_dates)
+
 
     def __unicode__(self):
         return "%s"  % (self.name)

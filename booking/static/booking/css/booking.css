@@ -1,7 +1,23 @@
-.booking_participant li {
+.booking_participant {
 	display: block;
 	float: left;
 	margin: 5px;
+}
+
+.booking_participant img {
+	opacity: 1.0;
+}
+
+.myself img {
+	border: 1px solid #D93E39;
+
+}
+
+.myself img:hover {
+	-webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
+	-ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=5, OffY=5, Color='#444')";
+	opacity: 0.9;
+	background-color: white
 }
 
 .clear {

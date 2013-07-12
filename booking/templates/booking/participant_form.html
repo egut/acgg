@@ -1,7 +1,9 @@
 {% extends "base.html" %}
+{% load sekizai_tags %}
 {% load i18n %}
 {% block content %}
 
+<h1>Anmälan</h1>
 <form method ="POST"> 
     {% csrf_token %}
 
@@ -32,6 +34,33 @@
     {% endfor %}
 
     <input type="submit" value="Save" />
+    {% if object.id %}
+    <a href="{% url 'participant_delete' object.id %}" class="button red">Avboka</a>
+    {% endif %}
 </form>
 
+{%  addtoblock "css" %}
+    <style>
+        .error, .field_error {
+            color: red;
+
+        }
+
+        .error {
+            margin-left: 20px;            
+        }
+    </style>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" type="text/css" />
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.10.3.js"></script>   
+    <script type="text/javascript">
+                // Implement the datepicker
+     $(function() {
+        $('#id_from_date').datepicker({ 'dateFormat': "yy-mm-dd" });
+        $('#id_to_date').datepicker({ 'dateFormat': "yy-mm-dd" });
+     });
+    </script>
+{% endaddtoblock %}
 {% endblock %}
+
+
